@@ -33,4 +33,6 @@ export class EmployeeFilter {
     area?: string;
     antiquity?: number;
     phone?: string;
+    skip?: number;
+    limit?: number;
 }
