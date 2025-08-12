@@ -9,17 +9,32 @@ interface EmployeeState {
     employees: Employee[];
     setEmployees: (employees: Employee[]) => void;
     fetchEmployees: () => Promise<void>;
+    total: number;
+    skip: number;
+    limit: number;
+    areaFilter?: string;
+    setSkip: (skip: number) => void;
+    setLimit: (limit: number) => void;
+    setAreaFilter: (area?: string) => void;
 }
 
 export const useEmployeeStore = create<EmployeeState>((set) => ({
     employees: [],
+    total: 0,
+    skip: 0,
+    limit: 10,
+    areaFilter: undefined,
+    setSkip: (skip) => set({ skip }),
+    setLimit: (limit) => set({ limit }),
+    setAreaFilter: (area) => set({ areaFilter: area }),
     setEmployees: (employees) => set({ employees }),
     fetchEmployees: async () => {
         const employeeService = new EmployeeService(new EmployeeRepository(api, "employee"));
         try {
             const response = await employeeService.findAll();
+            const total = await employeeService.count();
             if (response.Data) {
-                set({ employees: response.Data });
+                set({ employees: response.Data, total: total.Data });
             } else {
                 console.error("No employees found");
             }
