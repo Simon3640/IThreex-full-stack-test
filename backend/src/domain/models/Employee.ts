@@ -29,3 +29,8 @@ export class EmployeeInDB extends Employee {
     deletedAt: Date | null;
 }
 
+export class EmployeeFilter {
+    area?: string;
+    antiquity?: number;
+    phone?: string;
+}
