@@ -1,6 +1,6 @@
 import { EmployeeCreate } from "../models/employee";
 
-export const DefaultUsers: EmployeeCreate[] = [
+export const defaultEmployees: EmployeeCreate[] = [
     {
         name: "John Doe",
         area: "Engineering",

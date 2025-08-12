@@ -1,7 +1,7 @@
 export class ApplicationError{
-    Code: bigint;
-    Context: string;
-    Message: string;
+    Code!: bigint;
+    Context!: string;
+    Message!: string;
 
 
     toError(): Error {

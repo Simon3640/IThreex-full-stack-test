@@ -1,7 +1,7 @@
 import { LocaleTypeEnum } from "./locale-type-enum";
 import enLocal from "./messages/en-local";
 import esLocal from "./messages/es-local";
-import { MessageKeysDictionaryEnum } from "./messages/Keys";
+import { MessageKeysDictionaryEnum } from "./messages/keys";
 
 export class Locale {
   localeType: LocaleTypeEnum;

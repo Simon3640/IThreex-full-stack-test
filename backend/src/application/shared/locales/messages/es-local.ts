@@ -17,4 +17,5 @@ export default {
   USER_DOES_NOT_EXIST: "El usuario no existe.",
   EMPLOYEE_ERROR: "Error al obtener los empleados.",
   EMPLOYEES_NOT_FOUND: "No se encontraron empleados.",
+  EMPLOYEES_FOUND: "Empleados encontrados.",
 };

@@ -3,10 +3,10 @@ import AppStatusEnum from "../status/application-status";
 export class UseCaseResult<T> {
     Data?: T;
     Error?: string | null;
-    Headers: Record<string, string>;
+    Headers!: Record<string, string>;
     Details?: string;
-    StatusCode: AppStatusEnum;
-    Success: boolean;
+    StatusCode!: AppStatusEnum;
+    Success!: boolean;
 
     getHeaders(headers: Record<string, string>): Record<string, string> {
         return headers || {};
@@ -46,11 +46,11 @@ export class UseCaseResult<T> {
         this.Success = false;
     }
     toResultDTO(): Record<string, string> {
-        let result = {
+        let result: Record<string, string> = {
             statusCode: this.StatusCode.toString(),
             success: this.Success.toString(),
             details: this.Details || "",
-        }
+        };
         if (this.Data) {
             result["data"] = JSON.stringify(this.Data);
         }
@@ -62,7 +62,7 @@ export class UseCaseResult<T> {
     isSuccess(): boolean {
         return this.Success;
     }
-    getData(): T | undefined {
+    getData(Success: string, data: any, p0: string): T | undefined {
         return this.Data;
     }
     hasError(): boolean {

@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "name": "Launch Configuration for Express TypeScript",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Express TS",
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": [
+        "--require",
+        "ts-node/register"
+      ],
+      "args": [
+        "${workspaceFolder}/backend/src/infraestructure/api/index.ts"
+      ],
+      "cwd": "${workspaceFolder}/backend",
+      "env": {
+        "NODE_ENV": "development",
+        "TS_NODE_TRANSPILE_ONLY": "true",
+        "DATABASE_URL": "postgresql://fullstacktest:fullstacktest@localhost:5436/full_stack_test"
+      },
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/backend/**/*.ts"]
+    }
+  ]
+}

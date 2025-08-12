@@ -1,0 +1,18 @@
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    expose:
+      - 5432
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_USER: fullstacktest
+      POSTGRES_PASSWORD: fullstacktest
+    volumes:
+      - fullstacktest:/var/lib/postgresql/data
+
+volumes:
+  fullstacktest:
+    external: true
