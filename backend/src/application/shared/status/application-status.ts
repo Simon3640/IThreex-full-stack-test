@@ -1,0 +1,16 @@
+export default class AppStatusEnum {
+	static readonly Success: string = "OK"
+	static readonly Updated: string = "UD"
+	static readonly Created: string = "CD"
+	static readonly PartialContent: string = "PA_CO"
+	static readonly InvalidInput: string = "BA_RE"
+	static readonly Unauthorized: string = "UNAU"
+	static readonly NotFound: string = "NO_FO"
+	static readonly Conflict: string = "CONF"
+	static readonly InternalError: string = "IN_ER"
+	static readonly NotImplemented: string = "NO_IM"
+	static readonly ProviderError: string = "PR_ER"
+	static readonly ChatProviderError: string = "CH_PR_ER"
+	static readonly ProviderEmptyResponse: string = "PR_EM_RE"
+	static readonly ProviderEmptyCacheContext: string = "PR_EM_CA_CO"
+}
