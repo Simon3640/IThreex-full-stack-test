@@ -1,13 +1,13 @@
 
 import { useEffect } from "react";
-import { useEmployeeStore } from "../../../application/store/employee";
+import { useEmployeeStore } from "../../../infraestructure/store/employee";
 
 export const EmployeeList = () => {
-  const { employees, loadEmployees } = useEmployeeStore();
+  const { employees, fetchEmployees } = useEmployeeStore();
 
   useEffect(() => {
-    loadEmployees();
-  }, [loadEmployees]);
+    fetchEmployees();
+  }, [fetchEmployees]);
 
   return (
     <table border={1} cellPadding={5}>
