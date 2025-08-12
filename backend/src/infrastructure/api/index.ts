@@ -1,6 +1,6 @@
 import * as express from "express";
 import { apiV1Router } from "./v1/router";
-import { initializeInfrastructure } from "../..";
+import { initializeInfrastructure } from "..";
 
 const app = express();
 const PORT = process.env.PORT || 3000;

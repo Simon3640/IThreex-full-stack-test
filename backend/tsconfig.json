@@ -3,7 +3,7 @@
     "lib": ["ESNext"],
     "outDir": "dist",
     "sourceMap": true,
-    "target": "ES2022",
+    "target": "ES2020",
     "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -15,11 +15,16 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "rootDir": "./src",
+    "rootDir": "src",
     "inlineSources": true
-
   },
   "compileOnSave": true,
-  "exclude": ["./src/**/*.spec.ts", "./src/**/*.mock.ts"],
-  "include": ["./src/**/*"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.spec.ts",
+    "src/**/*.mock.ts",
+    "src/infrastructure/database/generated"
+  ],
+  "include": ["src/**/*"]
 }

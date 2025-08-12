@@ -11,5 +11,6 @@ export const employeeRouter = Router(
 employeeRouter.get("/", async (req: Request, res: Response) => {
     const payload: EmployeeFilter = req.query;
     let useCaseResult = await new GetAllEmployeeUseCase(new LoggerProvider(), new PrismaEmployeeRepository()).execute(payload);
+    // Falto request resolver y validación de errores
     res.json(useCaseResult);
 })

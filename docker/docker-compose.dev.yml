@@ -1,4 +1,16 @@
 services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/dockerfile.dev
+    ports:
+      - "3000:3000"
+    env_file:
+      - ../.env.backend
+    depends_on:
+      - db
+    command: node dist/infrastructure/api/index.js
+
   db:
     build:
       context: ./db

@@ -1,6 +1,6 @@
-import AppSettings from "./application/shared/settings/app-settings"
-import { PrismaDatabase } from "./infraestructure/database";
-import { LoggerProvider } from "./infraestructure/providers/logger-provider";
+import AppSettings from "../application/shared/settings/app-settings"
+import { PrismaDatabase } from "./database";
+import { LoggerProvider } from "./providers/logger-provider";
 
 export function initializeInfrastructure(): void{
     AppSettings.init({
