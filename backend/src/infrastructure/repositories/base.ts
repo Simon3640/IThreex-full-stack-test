@@ -21,4 +21,12 @@ export class PrismaRepositoryBase<TCreate, TUpdate, TDomain, TFilter>
         )) as unknown as Promise<TDomain[]>;
     }
 
+    async count(payload?: TFilter | undefined): Promise<number> {
+        let query = {};
+        if (payload && Object.keys(payload).length > 0) {
+            query = { where: { ...payload } };
+        }
+        return (await (this.prisma[this.modelName] as any).count(query)) as number;
+    }
+
 }

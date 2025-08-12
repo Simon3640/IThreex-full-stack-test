@@ -9,7 +9,7 @@ services:
       - ../.env.backend
     depends_on:
       - db
-    command: sh -c "npx prisma migrate deploy --schema src/infrastructure/database/prisma/schema.prisma && node dist/infrastructure/api/index.js"
+    command: sh -c "npx prisma migrate deploy --schema ./dist/infrastructure/database/prisma/schema.prisma && node dist/infrastructure/api/index.js"
     #["npx", "prisma", "generate", "--schema", "src/infrastructure/database/prisma/schema.prisma", "&&", "node", "dist/infrastructure/api/index.js"]
     restart: on-failure
 

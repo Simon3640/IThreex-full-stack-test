@@ -4,4 +4,5 @@ export interface IBaseRepository<TCreate, TUpdate, TDomain, TFilter> {
     // findById(id: string): Promise<TDomain | null>;
     findAll(payload?: TFilter): Promise<TDomain[]>;
     // delete(id: string): Promise<boolean>;
+    count(payload?: TFilter): Promise<number>;
 }
