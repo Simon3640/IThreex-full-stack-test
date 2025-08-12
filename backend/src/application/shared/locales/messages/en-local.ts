@@ -15,4 +15,6 @@ export default {
   INVALID_PASSWORD: "Invalid password.",
   INVALID_SESSION: "Invalid session.",
   USER_DOES_NOT_EXIST: "User does not exist.",
+  EMPLOYEE_ERROR: "Error getting employees.",
+  EMPLOYEES_NOT_FOUND: "No employees found.",
 };

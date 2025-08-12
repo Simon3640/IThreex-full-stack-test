@@ -4,7 +4,12 @@ import esLocal from "./messages/es-local";
 import { MessageKeysDictionaryEnum } from "./messages/Keys";
 
 export class Locale {
-  static getLocale(locale: LocaleTypeEnum): { [key: string]: string } {
+  localeType: LocaleTypeEnum;
+  constructor(localeType: LocaleTypeEnum) {
+    this.localeType = localeType;
+  }
+
+  static getLocale(locale: LocaleTypeEnum): Record<string, string> {
     const locales = {
       [LocaleTypeEnum.ES]: esLocal,
       [LocaleTypeEnum.EN]: enLocal,
@@ -14,8 +19,8 @@ export class Locale {
     return locales[locale] || enLocal;
   }
 
-  static get(localeType: LocaleTypeEnum, key: MessageKeysDictionaryEnum): string {
-    const locale = this.getLocale(localeType);
+  get(localeType: LocaleTypeEnum, key: MessageKeysDictionaryEnum): string {
+    const locale = Locale.getLocale(localeType);
     return locale[key] || `Missing translation for ${key}`;
   }
 }
