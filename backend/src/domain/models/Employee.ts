@@ -1,9 +1,9 @@
 export class EmployeeBase {
     [optional: string]: unknown;
-    name: string;
-    area: string;
-    antiquity: number;
-    phone: string;
+    name!: string;
+    area!: string;
+    antiquity!: number;
+    phone!: string;
 }
 
 export class EmployeeCreate extends EmployeeBase {}
@@ -16,17 +16,17 @@ export class EmployeeUpdateBase {
 }
 
 export class EmployeeUpdate extends EmployeeUpdateBase {
-    id: string;
+    id!: string;
 }
 
 export class Employee extends EmployeeBase {
-    id: string;
+    id!: bigint | string;
 }
 
 export class EmployeeInDB extends Employee {
-    createdAt: Date;
-    updatedAt: Date;
-    deletedAt: Date | null;
+    createdAt!: Date;
+    updatedAt!: Date;
+    deletedAt!: Date | null;
 }
 
 export class EmployeeFilter {

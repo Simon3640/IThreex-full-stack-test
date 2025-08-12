@@ -1,6 +1,6 @@
 import { Employee, EmployeeFilter } from "../../../domain/models/employee";
 import { ILoggerProvider } from "../../contracts/logger-provider";
-import { IEmployeeRepository } from "../../contracts/repositories/Employee";
+import { IEmployeeRepository } from "../../contracts/repositories/employee";
 import { Locale } from "../../shared/locales/app-messages";
 import { LocaleTypeEnum } from "../../shared/locales/locale-type-enum";
 import { MessageKeysDictionaryEnum } from "../../shared/locales/messages/Keys";
@@ -13,6 +13,12 @@ export class GetAllEmployeeUseCase implements BaseUseCase<EmployeeFilter, Employ
     log: ILoggerProvider;
     repo: IEmployeeRepository;
     locale: LocaleTypeEnum;
+
+    constructor(loggerProvider: ILoggerProvider, employeeRepository: IEmployeeRepository) {
+        this.log = loggerProvider;
+        this.repo = employeeRepository;
+        this.locale = LocaleTypeEnum.EN; // Default locale
+    }
 
     setLocale(locale: string): void {
         if (locale !== "") {
@@ -28,7 +34,11 @@ export class GetAllEmployeeUseCase implements BaseUseCase<EmployeeFilter, Employ
                 result.setError(AppStatusEnum.NotFound, this.AppMessages.get(this.locale, MessageKeysDictionaryEnum.EMPLOYEES_NOT_FOUND), "");
             }
         } catch (error) {
-            result.setError(AppStatusEnum.InternalError, this.AppMessages.get(this.locale, MessageKeysDictionaryEnum.EMPLOYEE_ERROR), error);
+            result.setError(
+                AppStatusEnum.InternalError, 
+                this.AppMessages.get(this.locale, MessageKeysDictionaryEnum.EMPLOYEE_ERROR),
+                (error as Error).message
+            );
         }
         return result;
     }
