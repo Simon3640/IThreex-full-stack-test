@@ -3,6 +3,8 @@ import type { IBaseRepository } from "../../application/contracts/repositories/b
 import type { ResponseDTO } from "../../application/dto/response-dto";
 
 export class BaseRepository<TCreate, TUpdate, TDomain, TFilter> implements IBaseRepository<TCreate, TUpdate, TDomain, TFilter> {
+    create!: TCreate;
+    update!: TUpdate;
     protected http: AxiosInstance;
     protected endpoint: string;
     constructor(http: AxiosInstance, endpoint: string) {

@@ -146,24 +146,27 @@ con las variables de entorno necesarias.
 
 .env.backend
 ```
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=postgres
-DB_PASS=postgres
-DB_NAME=employees
-PORT=3001
+DATABASE_URL="postgresql://fullstacktest:fullstacktest@db:5432/full_stack_test?schema=public"
+
 ```
 .env.frontend
 ```
-BACKEND_API_URL=http://localhost:3001/api
+BACKEND_API_URL=http://localhost:3000/api
 ```
 
-### 3. Levantar docker compose
+### 3. Levantar docker compose para el backend y la base de datos
 ```bash
-docker compose up -d
+docker compose -f docker/docker-compose.dev.yml up -d
 ```
 
-### 4. Acceder
+### 4. Instalar dependencias y ejecutar el frontend
+```bash
+cd client
+npm install
+npm run dev
+```
+
+### 5. Acceder
 
 - Backend: [http://localhost:3001/api](http://localhost:3001/api)
 - Frontend: [http://localhost:3000](http://localhost:3000)

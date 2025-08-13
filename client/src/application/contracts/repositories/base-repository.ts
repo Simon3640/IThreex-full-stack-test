@@ -7,4 +7,7 @@ export interface IBaseRepository<TCreate, TUpdate, TDomain, TFilter> {
     findAll(payload?: TFilter): Promise<ResponseDTO<TDomain[]>>;
     // delete(id: string): Promise<boolean>;
     count(payload?: TFilter): Promise<ResponseDTO<number>>;
+
+    create: TCreate
+    update: TUpdate
 }

@@ -12,27 +12,28 @@ interface EmployeeState {
     total: number;
     skip: number;
     limit: number;
-    areaFilter?: string;
+    area?: string;
     setSkip: (skip: number) => void;
     setLimit: (limit: number) => void;
     setAreaFilter: (area?: string) => void;
 }
 
-export const useEmployeeStore = create<EmployeeState>((set) => ({
+export const useEmployeeStore = create<EmployeeState>((set, get) => ({
     employees: [],
     total: 0,
     skip: 0,
     limit: 10,
-    areaFilter: undefined,
+    area: undefined,
     setSkip: (skip) => set({ skip }),
     setLimit: (limit) => set({ limit }),
-    setAreaFilter: (area) => set({ areaFilter: area }),
+    setAreaFilter: (area) => set({ area: area }),
     setEmployees: (employees) => set({ employees }),
     fetchEmployees: async () => {
+        const {skip, limit, area} = get();
         const employeeService = new EmployeeService(new EmployeeRepository(api, "employee"));
         try {
-            const response = await employeeService.findAll();
-            const total = await employeeService.count();
+            const response = await employeeService.findAll({ skip, limit, area });
+            const total = await employeeService.count({area});
             if (response.Data) {
                 set({ employees: response.Data, total: total.Data });
             } else {

@@ -16,11 +16,11 @@ export class EmployeeUpdateBase {
 }
 
 export class EmployeeUpdate extends EmployeeUpdateBase {
-    id!: string;
+    id!: number;
 }
 
 export class Employee extends EmployeeBase {
-    id!: bigint | string;
+    id!: number;
 }
 
 export class EmployeeInDB extends Employee {
@@ -33,4 +33,6 @@ export class EmployeeFilter {
     area?: string;
     antiquity?: number;
     phone?: string;
+    skip?: number;
+    limit?: number;
 }
